@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PhotoApp</string>
+    <string name="photoapp_menu_addPhoto">Add photo</string>
+    <string name="title_activity_add_photo">AddPhoto</string>
+    <string name="photoapp_addp_header">Add new photo</string>
+    <string name="photoapp_addp_source">Source URL:</string>
+    <string name="photoapp_addp_title">Title:</string>
+    <string name="photoapp_addp_entertitle">Enter title</string>
+    <string name="photoapp_addp_urlhint">Enter url</string>
+</resources>
