@@ -16,6 +16,10 @@ class MainActivity : AppCompatActivity() {
     companion object {
         const val CARD_MARGIN = 16
         const val ADD_PHOTO = 997
+
+        const val titleKey = "title"
+        const val dateKey = "date"
+        const val urlKey = "url"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
