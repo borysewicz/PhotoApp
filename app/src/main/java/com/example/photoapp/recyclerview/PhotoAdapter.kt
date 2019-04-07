@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.photoapp.R
-import java.util.*
+import com.example.photoapp.model.PhotoModel
+import com.squareup.picasso.Picasso
 
-class PhotoAdapter :  RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder>() {
+class PhotoAdapter(val imageList: List<PhotoModel>) :  RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder>() {
 
     class PhotoViewHolder(cardView: CardView, val title : TextView, val image : ImageView
                             , val date : TextView, val tags: TextView) : RecyclerView.ViewHolder(cardView)
@@ -23,13 +24,15 @@ class PhotoAdapter :  RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return 1
+        return imageList.size
     }
 
     override fun onBindViewHolder(photoView: PhotoViewHolder, pos: Int) {
-        photoView.date.text = Calendar.getInstance().time.toString()
-        photoView.tags.text = "Kotek piesek mysz"
-        photoView.title.text = "Dupa"
+        val model = imageList.get(pos)
+        photoView.date.text = model.Date
+        photoView.tags.text = model.tags.toString()
+        photoView.title.text = model.title
+        Picasso.get().load(model.url).into(photoView.image)
     }
 
 

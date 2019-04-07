@@ -9,5 +9,7 @@
     <string name="photoapp_addp_urlhint">Enter url</string>
     <string name="photoapp_addp_button">Add photo</string>
     <string name="error_empty">Field cannot be empty</string>
-    <string name="bmi_date_format">\"dd-mm-yyy\"</string>
+    <string name="bmi_date_format">dd-MM-yyyy</string>
+    <string name="photoapp_card_tags">Tags:</string>
+    <string name="photoapp_card_date">Date: </string>
 </resources>
