@@ -52,7 +52,7 @@ class AddPhoto : AppCompatActivity() {
     private fun getCurrentDate() : String{
         val time = Calendar.getInstance().time
 
-        val timeFormat = SimpleDateFormat(getString(R.string.bmi_date_format), Locale.getDefault())
+        val timeFormat = SimpleDateFormat(getString(R.string.photoapp_date_format), Locale.getDefault())
         return timeFormat.format(time)
     }
 

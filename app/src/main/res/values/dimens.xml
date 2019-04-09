@@ -1,3 +1,11 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="photoapp_margin_elements">8dp</dimen>
+    <dimen name="photoapp_main_headerTextSize">24sp</dimen>
+    <dimen name="photoapp_addp_headerTextSize">36sp</dimen>
+    <dimen name="photoapp_addp_guidelineMarginTop">292dp</dimen>
+    <dimen name="photoapp_addp_guidelineMarginBot">383dp</dimen>
+    <dimen name="photoapp_addp_constaintGuideEnd">375dp</dimen>
+    <dimen name="photoapp_card_TagsBotMargin">16dp</dimen>
+    <dimen name="photoapp_card_dateTVTopMargiin">9dp</dimen>
 </resources>

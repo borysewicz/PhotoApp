@@ -7,11 +7,13 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.example.photoapp.logic.PhotoLoader
 import com.example.photoapp.model.PhotoModel
+import com.example.photoapp.recyclerview.SwipeToDeleteCallback
 import com.example.photoapp.recyclerview.PhotoAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -39,9 +41,18 @@ class MainActivity : AppCompatActivity() {
             setHasFixedSize(false)
             layoutManager = manager
             adapter = photoAdapter
+            val itemTouchHelper = ItemTouchHelper(SwipeToDeleteCallback(this))
+            itemTouchHelper.attachToRecyclerView(this)
         }
         addRecyclerDecoration(recycler)
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val menuInflater = menuInflater
+        menuInflater.inflate(R.menu.main,menu)
+        return true
+    }
+
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId){
@@ -53,12 +64,6 @@ class MainActivity : AppCompatActivity() {
     private fun startAddPhotoActivity() : Boolean{
         val intent = Intent(this,AddPhoto::class.java)
         startActivityForResult(intent, ADD_PHOTO)
-        return true
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val menuInflater = menuInflater
-        menuInflater.inflate(R.menu.main,menu)
         return true
     }
 
