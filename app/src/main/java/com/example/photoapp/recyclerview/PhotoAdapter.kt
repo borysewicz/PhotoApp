@@ -1,5 +1,6 @@
 package com.example.photoapp.recyclerview
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
@@ -14,9 +15,15 @@ import android.util.Log
 import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import android.graphics.drawable.Drawable
+import com.example.photoapp.details.PhotoDetails
 
 
 class PhotoAdapter(val imageList: MutableList<PhotoModel>) :  RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder>() {
+
+    companion object {
+        val MODEL_KEY = "PhotoModel"
+        val TAG_ERROR = "Error loading tag"
+    }
 
     class PhotoViewHolder(cardView: CardView, val title : TextView, val image : ImageView
                             , val date : TextView, val tags: TextView) : RecyclerView.ViewHolder(cardView)
@@ -24,6 +31,7 @@ class PhotoAdapter(val imageList: MutableList<PhotoModel>) :  RecyclerView.Adapt
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
         val card : CardView = LayoutInflater.from(parent.context)
             .inflate(R.layout.photo_card,parent,false) as CardView
+
         return PhotoViewHolder(card,card.findViewById(R.id.photoapp_card_titleTV),
                                 card.findViewById(R.id.photoapp_card_photoIV),card.findViewById(R.id.photoapp_card_dateTV),
                                 card.findViewById(R.id.photoapp_card_tagsTV))
@@ -47,6 +55,16 @@ class PhotoAdapter(val imageList: MutableList<PhotoModel>) :  RecyclerView.Adapt
                 setTags(bitmap,photoView)
             }
         })
+        setOnClickListener(photoView,model)
+    }
+
+    private fun setOnClickListener(photoView: PhotoViewHolder,model: PhotoModel) {
+        photoView.itemView.setOnClickListener {
+            val context = it.context
+            val intent = Intent(context,PhotoDetails::class.java)
+            intent.putExtra(MODEL_KEY,model)
+            context.startActivity(intent)
+        }
     }
 
     private fun setTags(img : Bitmap?,photoView : PhotoViewHolder) {
@@ -56,7 +74,7 @@ class PhotoAdapter(val imageList: MutableList<PhotoModel>) :  RecyclerView.Adapt
             val res = labels.map{it.text}
             photoView.tags.text = res.take(3).joinToString (", ")
         }.addOnFailureListener{e ->
-            Log.e("TAGERROR",e.toString())
+            Log.e(TAG_ERROR,e.toString())
         }
     }
 

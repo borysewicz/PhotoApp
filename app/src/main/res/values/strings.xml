@@ -11,6 +11,8 @@
     <string name="error_empty">Field cannot be empty</string>
     <string name="photoapp_date_format">dd-MM-yyyy</string>
     <string name="photoapp_card_tags">Tags:</string>
-    <string name="photoapp_card_date">Date: </string>
+    <string name="photoapp_card_date">Date:</string>
     <string name="photoapp_main_header">Your photo gallery</string>
+    <string name="title_activity_photo_details">PhotoDetails</string>
+    <string name="action_settings">Settings</string>
 </resources>
