@@ -19,7 +19,7 @@
                 android:scaleType="center"
         />
         <TextView
-                android:text="@string/photoapp_addp_title"
+                android:text="@string/photoapp_photo_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/photoapp_card_title"
                 android:layout_marginTop="@dimen/photoapp_margin_elements"
@@ -27,14 +27,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="@dimen/photoapp_margin_elements" android:textAlignment="viewStart" android:textStyle="bold"/>
         <TextView
-                android:text="@string/photoapp_card_date"
+                android:text="@string/photoapp_photo_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/photoapp_card_date" android:layout_marginTop="@dimen/photoapp_margin_elements"
                 app:layout_constraintTop_toBottomOf="@+id/photoapp_card_photoIV"
                 app:layout_constraintEnd_toStartOf="@+id/photoapp_card_dateTV" android:layout_marginEnd="@dimen/photoapp_margin_elements"/>
         <TextView
-                android:text="@string/photoapp_card_tags"
+                android:text="@string/photoapp_photo_tags"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/photoapp_card_tags"

@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v4.view.ViewPager
-import android.widget.TableLayout
 import com.example.photoapp.R
 import com.example.photoapp.model.PhotoModel
 import com.example.photoapp.recyclerview.PhotoAdapter.Companion.MODEL_KEY
@@ -17,8 +16,7 @@ import com.example.photoapp.recyclerview.PhotoAdapter.Companion.MODEL_KEY
 class PhotoDetailsActivity : FragmentActivity() {
 
     companion object {
-        private val PAGES = 1
-        private val PHOTO_FULL = "Full photo"
+        private const val PAGES = 2
     }
     private lateinit var pager: ViewPager
 
@@ -38,14 +36,17 @@ class PhotoDetailsActivity : FragmentActivity() {
     private inner class ScreenSlidePagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
         override fun getCount(): Int = PAGES
 
-        override fun getItem(position: Int): Fragment =
-            PhotoFullFragment.newInstance((intent.getSerializableExtra(MODEL_KEY) as PhotoModel).url)
-
-        override fun getPageTitle(position: Int): CharSequence? {
-            when(position){
-                0 ->  return PHOTO_FULL
+        override fun getItem(position: Int): Fragment {
+            return when(position){
+                0 -> PhotoFullFragment.newInstance((intent.getSerializableExtra(MODEL_KEY) as PhotoModel).url)
+                else -> DetailsWrapperFragment.newInstance(intent.getSerializableExtra(MODEL_KEY) as PhotoModel)
             }
-            return "Error"
+        }
+        override fun getPageTitle(position: Int): CharSequence? {
+            return when(position){
+                0 ->   getString(R.string.details_full)
+                else -> getString(R.string.details_data)
+            }
         }
     }
 

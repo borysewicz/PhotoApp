@@ -1,18 +1,20 @@
 <resources>
     <string name="app_name">PhotoApp</string>
     <string name="photoapp_menu_addPhoto">Add photo</string>
-    <string name="title_activity_add_photo">AddPhoto</string>
+    <string name="title_activity_add_photo">Add photo</string>
     <string name="photoapp_addp_header">Add new photo</string>
     <string name="photoapp_addp_source">Source URL:</string>
-    <string name="photoapp_addp_title">Title:</string>
+    <string name="photoapp_photo_title">Title:</string>
     <string name="photoapp_addp_entertitle">Enter title</string>
     <string name="photoapp_addp_urlhint">Enter url</string>
     <string name="photoapp_addp_button">Add photo</string>
     <string name="error_empty">Field cannot be empty</string>
     <string name="photoapp_date_format">dd-MM-yyyy</string>
-    <string name="photoapp_card_tags">Tags:</string>
-    <string name="photoapp_card_date">Date:</string>
+    <string name="photoapp_photo_tags">Tags:</string>
+    <string name="photoapp_photo_date">Date:</string>
     <string name="photoapp_main_header">Your photo gallery</string>
-    <string name="title_activity_photo_details">PhotoDetails</string>
+    <string name="title_activity_photo_details">Photo details</string>
     <string name="action_settings">Settings</string>
+    <string name="details_full">Full photo</string>
+    <string name="details_data">Photo data</string>
 </resources>
