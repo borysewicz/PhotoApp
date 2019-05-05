@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.example.photoapp.R
-import com.example.photoapp.model.PhotoModel
 import com.squareup.picasso.Picasso
 
 
@@ -31,7 +30,7 @@ class PhotoFullFragment : Fragment() {
         val view = inflater.inflate(R.layout.photo_full_fragment, container, false)
         if (arguments != null){
             val imgUrl = arguments!!.getString(URL)
-            setImage(imgUrl,view)
+            setImage(imgUrl!!,view)
         }
         return view
     }

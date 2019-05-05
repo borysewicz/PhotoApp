@@ -14,7 +14,7 @@
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
         <activity
-                android:name=".details.PhotoDetails"
+                android:name=".details.PhotoDetailsActivity"
                 android:label="@string/title_activity_photo_details"
                 android:parentActivityName=".MainActivity"
                 android:theme="@style/AppTheme.NoActionBar">

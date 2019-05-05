@@ -15,7 +15,7 @@ import android.util.Log
 import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import android.graphics.drawable.Drawable
-import com.example.photoapp.details.PhotoDetails
+import com.example.photoapp.details.PhotoDetailsActivity
 
 
 class PhotoAdapter(val imageList: MutableList<PhotoModel>) :  RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder>() {
@@ -61,7 +61,7 @@ class PhotoAdapter(val imageList: MutableList<PhotoModel>) :  RecyclerView.Adapt
     private fun setOnClickListener(photoView: PhotoViewHolder,model: PhotoModel) {
         photoView.itemView.setOnClickListener {
             val context = it.context
-            val intent = Intent(context,PhotoDetails::class.java)
+            val intent = Intent(context,PhotoDetailsActivity::class.java)
             intent.putExtra(MODEL_KEY,model)
             context.startActivity(intent)
         }
