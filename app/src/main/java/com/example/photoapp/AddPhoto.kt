@@ -33,9 +33,9 @@ class AddPhoto : AppCompatActivity() {
 
     private fun exit(url: String, title: String, date: String) {
         val intent = Intent()
-        intent.putExtra(MainActivity.urlKey,url)
-        intent.putExtra(MainActivity.titleKey,title)
-        intent.putExtra(MainActivity.dateKey,date)
+        intent.putExtra(MainActivity.URLKEY,url)
+        intent.putExtra(MainActivity.TITLEKEY,title)
+        intent.putExtra(MainActivity.DATEKEY,date)
         setResult(Activity.RESULT_OK,intent)
         finish()
     }

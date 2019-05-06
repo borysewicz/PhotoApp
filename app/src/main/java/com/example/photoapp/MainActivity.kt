@@ -1,6 +1,7 @@
 package com.example.photoapp
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.graphics.Rect
 import android.support.v7.app.AppCompatActivity
@@ -15,6 +16,8 @@ import com.example.photoapp.logic.PhotoLoader
 import com.example.photoapp.model.PhotoModel
 import com.example.photoapp.recyclerview.SwipeToDeleteCallback
 import com.example.photoapp.recyclerview.PhotoAdapter
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -22,10 +25,11 @@ class MainActivity : AppCompatActivity() {
     companion object {
         const val CARD_MARGIN = 16
         const val ADD_PHOTO = 997
-
-        const val titleKey = "title"
-        const val dateKey = "date"
-        const val urlKey = "url"
+        const val TITLEKEY = "title"
+        const val DATEKEY = "date"
+        const val URLKEY = "url"
+        const val PREFERENCES = "preferences"
+        const val PHOTOS_HISTORY = "photos_history"
     }
 
     private val imageList : MutableList<PhotoModel> = mutableListOf()
@@ -45,6 +49,23 @@ class MainActivity : AppCompatActivity() {
             itemTouchHelper.attachToRecyclerView(this)
         }
         addRecyclerDecoration(recycler)
+        readPhotosFromHistory()
+        photoAdapter.notifyItemRangeInserted(0,imageList.size)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        findViewById<RecyclerView>(R.id.photoapp_main_mainRV).adapter?.notifyDataSetChanged()
+    }
+
+    private fun readPhotosFromHistory(){
+        val photosAsJson = getSharedPreferences(PREFERENCES,Context.MODE_PRIVATE).getString(PHOTOS_HISTORY,"")
+        if (photosAsJson.equals("")){
+            return
+        }
+        val listType = object : TypeToken<List<String>>() {}.type
+        val loadedPhotos = Gson().fromJson(photosAsJson, Array<PhotoModel>::class.java)
+        imageList.addAll(0,loadedPhotos.asList())
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -71,14 +92,22 @@ class MainActivity : AppCompatActivity() {
         when(requestCode){
             ADD_PHOTO ->{
                 if (resultCode == Activity.RESULT_OK){
-                    val url = data?.getStringExtra(urlKey)
-                    val title = data?.getStringExtra(titleKey)
-                    val date = data?.getStringExtra(dateKey)
+                    val url = data?.getStringExtra(URLKEY)
+                    val title = data?.getStringExtra(TITLEKEY)
+                    val date = data?.getStringExtra(DATEKEY)
                     imageList.add(PhotoLoader().loadPhoto(url!!,title!!,date!!))
                     photoapp_main_mainRV.adapter?.notifyDataSetChanged()
                 }
             }
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        val editor = getSharedPreferences(PREFERENCES,Context.MODE_PRIVATE).edit()
+        val photosAsJson = Gson().toJson(imageList)
+        editor.putString(PHOTOS_HISTORY,photosAsJson)
+        editor.apply()
     }
 
 
