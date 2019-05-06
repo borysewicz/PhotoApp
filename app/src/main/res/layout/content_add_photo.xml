@@ -10,7 +10,7 @@
         tools:context=".AddPhoto" android:id="@+id/photoapp_addphoto_urlTV">
 
     <TextView
-            android:text="@string/photoapp_addp_source"
+            android:text="@string/photoapp_photo_source"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/photapp_addp_urlTV" app:layout_constraintStart_toStartOf="parent"

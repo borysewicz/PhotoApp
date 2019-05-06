@@ -52,11 +52,7 @@ class MainActivity : AppCompatActivity() {
         readPhotosFromHistory()
         photoAdapter.notifyItemRangeInserted(0,imageList.size)
     }
-
-    override fun onStart() {
-        super.onStart()
-        findViewById<RecyclerView>(R.id.photoapp_main_mainRV).adapter?.notifyDataSetChanged()
-    }
+    
 
     private fun readPhotosFromHistory(){
         val photosAsJson = getSharedPreferences(PREFERENCES,Context.MODE_PRIVATE).getString(PHOTOS_HISTORY,"")
@@ -78,6 +74,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId){
             R.id.photoapp_menu_addPhoto -> startAddPhotoActivity()
+            R.id.photoapp_menu_refresh -> findViewById<RecyclerView>(R.id.photoapp_main_mainRV).adapter?.notifyDataSetChanged()
         }
         return false
     }

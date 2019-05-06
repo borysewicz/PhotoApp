@@ -2,6 +2,7 @@ package com.example.photoapp.details
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,6 +37,8 @@ class PhotoDataFragment : Fragment() {
         val model = arguments?.getSerializable(MODEL_KEY) as PhotoModel
         view.findViewById<TextView>(R.id.data_fragment_photo_title).text = model.title
         view.findViewById<TextView>(R.id.data_fragment_photo_date).text = model.Date
-        view.findViewById<TextView>(R.id.data_fragment_photo_tags).text = model.url
+        Log.d("model",model.tags.joinToString { ", " })
+        view.findViewById<TextView>(R.id.data_fragment_photo_tags).text = model.tags.joinToString (", ")
+        view.findViewById<TextView>(R.id.data_fragment_photo_url).text = model.url
     }
 }

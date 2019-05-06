@@ -52,7 +52,12 @@ class PhotoAdapter(val imageList: MutableList<PhotoModel>) :  RecyclerView.Adapt
             }
             override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
                 photoView.image.setImageBitmap(bitmap)
-                setTags(bitmap,photoView, model)
+               if (model.tags == listOf<String>()){
+                   setTags(bitmap,photoView, model)
+               }
+                else{
+                   photoView.tags.text = model.tags.take(3).joinToString (", ")
+               }
             }
         })
         setOnClickListener(photoView,model)

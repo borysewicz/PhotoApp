@@ -4,5 +4,5 @@ import java.io.Serializable
 
 
 class PhotoModel(val url: String,val title: String, val Date: String) : Serializable{
-     lateinit var tags: List<String>
+      var tags: List<String> = listOf<String>()
 }
