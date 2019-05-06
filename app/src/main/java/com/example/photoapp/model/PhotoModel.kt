@@ -3,4 +3,6 @@ package com.example.photoapp.model
 import java.io.Serializable
 
 
-class PhotoModel(val url: String,val title: String, val Date: String) : Serializable
+class PhotoModel(val url: String,val title: String, val Date: String) : Serializable{
+     lateinit var tags: List<String>
+}

@@ -52,7 +52,7 @@ class PhotoAdapter(val imageList: MutableList<PhotoModel>) :  RecyclerView.Adapt
             }
             override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
                 photoView.image.setImageBitmap(bitmap)
-                setTags(bitmap,photoView)
+                setTags(bitmap,photoView, model)
             }
         })
         setOnClickListener(photoView,model)
@@ -67,12 +67,13 @@ class PhotoAdapter(val imageList: MutableList<PhotoModel>) :  RecyclerView.Adapt
         }
     }
 
-    private fun setTags(img : Bitmap?,photoView : PhotoViewHolder) {
+    private fun setTags(img : Bitmap?,photoView : PhotoViewHolder, model: PhotoModel) {
         val firebaseImg = FirebaseVisionImage.fromBitmap(img!!)
         val labeler =FirebaseVision.getInstance().onDeviceImageLabeler
         labeler.processImage(firebaseImg).addOnSuccessListener { labels->
             val res = labels.map{it.text}
             photoView.tags.text = res.take(3).joinToString (", ")
+            model.tags = res
         }.addOnFailureListener{e ->
             Log.e(TAG_ERROR,e.toString())
         }
