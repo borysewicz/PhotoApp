@@ -25,6 +25,7 @@ class PhotoAdapter(val imageList: MutableList<PhotoModel>) :  RecyclerView.Adapt
         val MODEL_KEY = "PhotoModel"
         val MODEL_LIST = "list_of_models"
         val TAG_ERROR = "Error loading tag"
+        val TAGS_VISIBLE = 3
     }
 
     class PhotoViewHolder(cardView: CardView, val title : TextView, val image : ImageView
@@ -54,12 +55,10 @@ class PhotoAdapter(val imageList: MutableList<PhotoModel>) :  RecyclerView.Adapt
             }
             override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
                 photoView.image.setImageBitmap(bitmap)
-               if (model.tags == listOf<String>()){
-                   setTags(bitmap,photoView, model)
+               if (model.tags == listOf<String>()){  // if the photo hasn't been tagged yet, tag it, else use existing tags
+                   setTags(bitmap, model, photoView)
                }
-                else{
-                   photoView.tags.text = model.tags.take(3).joinToString (", ")
-               }
+                photoView.tags.text = model.tags.take(TAGS_VISIBLE).joinToString (", ")
             }
         })
         setOnClickListener(photoView,model)
@@ -76,13 +75,13 @@ class PhotoAdapter(val imageList: MutableList<PhotoModel>) :  RecyclerView.Adapt
         }
     }
 
-    private fun setTags(img : Bitmap?,photoView : PhotoViewHolder, model: PhotoModel) {
+    private fun setTags(img : Bitmap?, model: PhotoModel, photoView: PhotoViewHolder) {
         val firebaseImg = FirebaseVisionImage.fromBitmap(img!!)
         val labeler =FirebaseVision.getInstance().onDeviceImageLabeler
         labeler.processImage(firebaseImg).addOnSuccessListener { labels->
             val res = labels.map{it.text}
-            photoView.tags.text = res.take(3).joinToString (", ")
             model.tags = res
+            photoView.tags.text = model.tags.take(TAGS_VISIBLE).joinToString (", ")
         }.addOnFailureListener{e ->
             Log.e(TAG_ERROR,e.toString())
         }

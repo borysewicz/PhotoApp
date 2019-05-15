@@ -37,7 +37,6 @@ class PhotoDataFragment : Fragment() {
         val model = arguments?.getSerializable(MODEL_KEY) as PhotoModel
         view.findViewById<TextView>(R.id.data_fragment_photo_title).text = model.title
         view.findViewById<TextView>(R.id.data_fragment_photo_date).text = model.Date
-        Log.d("model",model.tags.joinToString { ", " })
         view.findViewById<TextView>(R.id.data_fragment_photo_tags).text = model.tags.joinToString (", ")
         view.findViewById<TextView>(R.id.data_fragment_photo_url).text = model.url
     }

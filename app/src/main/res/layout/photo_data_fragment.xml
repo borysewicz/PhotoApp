@@ -30,7 +30,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/data_fragment_photo_title"
             app:layout_constraintStart_toEndOf="@+id/data_fragment_titleTV"
-            android:layout_marginStart="8dp" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"/>
+            android:layout_marginStart="8dp" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+            android:textStyle="bold"/>
     <TextView
             android:text="TextView"
             android:layout_width="wrap_content"
@@ -38,27 +39,31 @@
             android:id="@+id/data_fragment_photo_date"
             app:layout_constraintStart_toEndOf="@+id/data_fragment_DateTV"
             android:layout_marginStart="8dp" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/data_fragment_photo_title"/>
+            app:layout_constraintTop_toBottomOf="@+id/data_fragment_photo_title" android:textStyle="bold"/>
     <TextView
             android:text="TextView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/data_fragment_photo_tags"
             app:layout_constraintStart_toEndOf="@+id/data_fragment_TagsTV"
             android:layout_marginStart="8dp" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/data_fragment_photo_date"/>
+            app:layout_constraintTop_toBottomOf="@+id/data_fragment_photo_date"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintHorizontal_bias="0.0" android:textStyle="bold"/>
     <TextView
             android:text="@string/photoapp_photo_source"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/data_fragment_urlTV" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/data_fragment_TagsTV"
+            app:layout_constraintTop_toBottomOf="@+id/data_fragment_photo_tags"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"/>
     <TextView
             android:text="TextView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/data_fragment_photo_url" app:layout_constraintStart_toEndOf="@+id/data_fragment_urlTV"
             android:layout_marginStart="8dp" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/data_fragment_photo_tags"/>
+            app:layout_constraintTop_toBottomOf="@+id/data_fragment_photo_tags"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintHorizontal_bias="0.0"/>
 </android.support.constraint.ConstraintLayout>

@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso
 class PhotoFullFragment : Fragment() {
 
     companion object {
-        val URL = "url"
+        const val URL = "url"
         fun newInstance(url:String) : PhotoFullFragment{
             val bundle = Bundle()
             bundle.putString(URL,url)

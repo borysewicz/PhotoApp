@@ -7,11 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.photoapp.R
 import com.example.photoapp.model.PhotoModel
+import com.example.photoapp.recyclerview.PhotoAdapter.Companion.MODEL_KEY
 import com.example.photoapp.recyclerview.PhotoAdapter.Companion.MODEL_LIST
 
 class DetailsWrapperFragment : Fragment() {
     companion object {
-        private const val MODEL_KEY = "model"
         fun newInstance(model: PhotoModel, modelList:String) : DetailsWrapperFragment{
             val bundle = Bundle()
             bundle.putSerializable(MODEL_KEY, model)
@@ -29,7 +29,6 @@ class DetailsWrapperFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         if (arguments != null){
             inflateChildFragments()
-
         }
     }
 

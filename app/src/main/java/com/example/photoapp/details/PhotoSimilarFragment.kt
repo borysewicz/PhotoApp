@@ -58,8 +58,8 @@ class PhotoSimilarFragment : Fragment(){
     private fun getSimilarImages() : List<PhotoModel>{
         val imageList = getImagesFromJson()
         val model = arguments?.getSerializable(MODEL_KEY) as PhotoModel
-        val photoSimilarityList  = countSimilarity(imageList,model).sortedBy { x -> x.second}
-                                                                .map { x -> x.first }
+        val photoSimilarityList  = countSimilarity(imageList,model).sortedBy { photoSimilarPair -> photoSimilarPair.second}
+                                                                .map { photoSimilarPair -> photoSimilarPair.first }
         return if (photoSimilarityList.size < SIMILAR_PHOTOS_SHOWN){
             photoSimilarityList
         } else photoSimilarityList.take(SIMILAR_PHOTOS_SHOWN)

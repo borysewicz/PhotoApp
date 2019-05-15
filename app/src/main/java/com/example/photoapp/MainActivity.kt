@@ -12,12 +12,10 @@ import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import com.example.photoapp.logic.PhotoLoader
 import com.example.photoapp.model.PhotoModel
 import com.example.photoapp.recyclerview.SwipeToDeleteCallback
 import com.example.photoapp.recyclerview.PhotoAdapter
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -50,9 +48,12 @@ class MainActivity : AppCompatActivity() {
         }
         addRecyclerDecoration(recycler)
         readPhotosFromHistory()
-        photoAdapter.notifyItemRangeInserted(0,imageList.size)
     }
 
+    override fun onStart() {
+        super.onStart()
+        findViewById<RecyclerView>(R.id.photoapp_main_mainRV).adapter?.notifyDataSetChanged()
+    }
 
     private fun readPhotosFromHistory(){
         val photosAsJson = getSharedPreferences(PREFERENCES,Context.MODE_PRIVATE).getString(PHOTOS_HISTORY,"")
@@ -64,11 +65,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val menuInflater = menuInflater
         menuInflater.inflate(R.menu.main,menu)
         return true
     }
-
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId){
@@ -91,7 +90,7 @@ class MainActivity : AppCompatActivity() {
                     val url = data?.getStringExtra(URLKEY)
                     val title = data?.getStringExtra(TITLEKEY)
                     val date = data?.getStringExtra(DATEKEY)
-                    imageList.add(PhotoLoader().loadPhoto(url!!,title!!,date!!))
+                    imageList.add(PhotoModel(url!!,title!!,date!!))
                     photoapp_main_mainRV.adapter?.notifyDataSetChanged()
                 }
             }
