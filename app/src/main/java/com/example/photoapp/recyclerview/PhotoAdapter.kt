@@ -16,12 +16,14 @@ import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import android.graphics.drawable.Drawable
 import com.example.photoapp.details.PhotoDetailsActivity
+import com.google.gson.Gson
 
 
 class PhotoAdapter(val imageList: MutableList<PhotoModel>) :  RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder>() {
 
     companion object {
         val MODEL_KEY = "PhotoModel"
+        val MODEL_LIST = "list_of_models"
         val TAG_ERROR = "Error loading tag"
     }
 
@@ -68,6 +70,8 @@ class PhotoAdapter(val imageList: MutableList<PhotoModel>) :  RecyclerView.Adapt
             val context = it.context
             val intent = Intent(context,PhotoDetailsActivity::class.java)
             intent.putExtra(MODEL_KEY,model)
+            val imagesAsJson = Gson().toJson(imageList)
+            intent.putExtra(MODEL_LIST,imagesAsJson)
             context.startActivity(intent)
         }
     }

@@ -52,14 +52,13 @@ class MainActivity : AppCompatActivity() {
         readPhotosFromHistory()
         photoAdapter.notifyItemRangeInserted(0,imageList.size)
     }
-    
+
 
     private fun readPhotosFromHistory(){
         val photosAsJson = getSharedPreferences(PREFERENCES,Context.MODE_PRIVATE).getString(PHOTOS_HISTORY,"")
         if (photosAsJson.equals("")){
             return
         }
-        val listType = object : TypeToken<List<String>>() {}.type
         val loadedPhotos = Gson().fromJson(photosAsJson, Array<PhotoModel>::class.java)
         imageList.addAll(0,loadedPhotos.asList())
     }

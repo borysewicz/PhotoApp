@@ -10,6 +10,7 @@ import android.support.v4.view.ViewPager
 import com.example.photoapp.R
 import com.example.photoapp.model.PhotoModel
 import com.example.photoapp.recyclerview.PhotoAdapter.Companion.MODEL_KEY
+import com.example.photoapp.recyclerview.PhotoAdapter.Companion.MODEL_LIST
 
 
 class PhotoDetailsActivity : FragmentActivity() {
@@ -36,9 +37,10 @@ class PhotoDetailsActivity : FragmentActivity() {
         override fun getCount(): Int = PAGES
 
         override fun getItem(position: Int): Fragment {
+            val model = intent.getSerializableExtra(MODEL_KEY) as PhotoModel
             return when(position){
-                0 -> PhotoFullFragment.newInstance((intent.getSerializableExtra(MODEL_KEY) as PhotoModel).url)
-                else -> DetailsWrapperFragment.newInstance(intent.getSerializableExtra(MODEL_KEY) as PhotoModel)
+                0 -> PhotoFullFragment.newInstance(model.url)
+                else -> DetailsWrapperFragment.newInstance(model, intent.getStringExtra(MODEL_LIST))
             }
         }
         override fun getPageTitle(position: Int): CharSequence? {

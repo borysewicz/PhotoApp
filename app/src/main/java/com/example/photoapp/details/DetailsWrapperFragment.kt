@@ -7,13 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.photoapp.R
 import com.example.photoapp.model.PhotoModel
+import com.example.photoapp.recyclerview.PhotoAdapter.Companion.MODEL_LIST
 
 class DetailsWrapperFragment : Fragment() {
     companion object {
         private const val MODEL_KEY = "model"
-        fun newInstance(model: PhotoModel) : DetailsWrapperFragment{
+        fun newInstance(model: PhotoModel, modelList:String) : DetailsWrapperFragment{
             val bundle = Bundle()
             bundle.putSerializable(MODEL_KEY, model)
+            bundle.putString(MODEL_LIST,modelList)
             val fragment = DetailsWrapperFragment()
             fragment.arguments = bundle
             return fragment
@@ -32,8 +34,9 @@ class DetailsWrapperFragment : Fragment() {
     }
 
     private fun inflateChildFragments() {
-        val dataFragment = PhotoDataFragment.newInstance(arguments?.getSerializable(MODEL_KEY) as PhotoModel)
-        val similarFragment = PhotoSimilarFragment()
+        val model = arguments?.getSerializable(MODEL_KEY) as PhotoModel
+        val dataFragment = PhotoDataFragment.newInstance(model)
+        val similarFragment = PhotoSimilarFragment.newInstance(arguments?.getString(MODEL_LIST) ?: "", model)
         val transaction = childFragmentManager.beginTransaction()
         transaction.replace(R.id.details_dataF,dataFragment)
         transaction.replace(R.id.details_similarF,similarFragment)

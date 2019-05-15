@@ -18,4 +18,6 @@
     <string name="details_full">Full photo</string>
     <string name="details_data">Photo data</string>
     <string name="menu_refresh">Refresh</string>
+    <string name="similar_image_heaer">Similar images in gallery</string>
+    <string name="similar_fragment_title">Similar photos in your gallery</string>
 </resources>
