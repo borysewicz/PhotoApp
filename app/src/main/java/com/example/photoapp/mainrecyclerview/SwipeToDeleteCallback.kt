@@ -1,4 +1,4 @@
-package com.example.photoapp.recyclerview
+package com.example.photoapp.mainrecyclerview
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
 

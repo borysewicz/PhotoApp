@@ -13,8 +13,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.example.photoapp.model.PhotoModel
-import com.example.photoapp.recyclerview.SwipeToDeleteCallback
-import com.example.photoapp.recyclerview.PhotoAdapter
+import com.example.photoapp.mainrecyclerview.SwipeToDeleteCallback
+import com.example.photoapp.mainrecyclerview.PhotoAdapter
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
 

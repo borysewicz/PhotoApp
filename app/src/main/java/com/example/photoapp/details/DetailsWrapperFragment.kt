@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.photoapp.R
 import com.example.photoapp.model.PhotoModel
-import com.example.photoapp.recyclerview.PhotoAdapter.Companion.MODEL_KEY
-import com.example.photoapp.recyclerview.PhotoAdapter.Companion.MODEL_LIST
+import com.example.photoapp.mainrecyclerview.PhotoAdapter.Companion.MODEL_KEY
+import com.example.photoapp.mainrecyclerview.PhotoAdapter.Companion.MODEL_LIST
 
 class DetailsWrapperFragment : Fragment() {
     companion object {

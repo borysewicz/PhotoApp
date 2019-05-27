@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.example.photoapp.R
 import com.example.photoapp.model.PhotoModel
-import com.example.photoapp.recyclerview.PhotoAdapter.Companion.MODEL_KEY
-import com.example.photoapp.recyclerview.PhotoAdapter.Companion.MODEL_LIST
+import com.example.photoapp.mainrecyclerview.PhotoAdapter.Companion.MODEL_KEY
+import com.example.photoapp.mainrecyclerview.PhotoAdapter.Companion.MODEL_LIST
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 

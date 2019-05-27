@@ -9,8 +9,8 @@ import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v4.view.ViewPager
 import com.example.photoapp.R
 import com.example.photoapp.model.PhotoModel
-import com.example.photoapp.recyclerview.PhotoAdapter.Companion.MODEL_KEY
-import com.example.photoapp.recyclerview.PhotoAdapter.Companion.MODEL_LIST
+import com.example.photoapp.mainrecyclerview.PhotoAdapter.Companion.MODEL_KEY
+import com.example.photoapp.mainrecyclerview.PhotoAdapter.Companion.MODEL_LIST
 
 
 class PhotoDetailsActivity : FragmentActivity() {

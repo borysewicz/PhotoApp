@@ -1,4 +1,4 @@
-package com.example.photoapp.recyclerview
+package com.example.photoapp.mainrecyclerview
 
 import android.content.Intent
 import android.graphics.Bitmap
